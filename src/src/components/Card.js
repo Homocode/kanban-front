@@ -26,8 +26,8 @@ function Card (props) {
             <div className="task inline-display">
                 <form onSubmit={handleSubmit} id="assignment-form">
                     <input onChange={handleChange} value={assignment} id="card-assignment" placeholder="Enter assignment...." type="text" name="card-assignment"></input>
-                    <button type="button" onClick={handleDelete} className="delete-button">X</button>
                 </form>
+                <button type="button" onClick={handleDelete} className="delete-button">X</button>
             </div>
             <div className="card-priority inline-display">
                 <div className="status-circle" id="priority-status-circle"></div>
