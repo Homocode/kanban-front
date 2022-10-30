@@ -32,8 +32,8 @@ function CardsContainer (props) {
     }
 
     const handleDeleteCard = (event) => {
-        const cardscontainerId = event.target.parentNode.parentNode.parentNode.getAttribute("id")
-        const cardId = event.target.parentNode.getAttribute("id")
+        const cardscontainerId = event.target.parentNode.parentNode.parentNode.parentNode.getAttribute("id")
+        const cardId = event.target.parentNode.parentNode.getAttribute("id")
         console.log(cardscontainerId)
         fetch(`http://ec2-54-207-162-78.sa-east-1.compute.amazonaws.com:3001/api/card/${cardscontainerId}/${cardId}`, {
             method: 'DELETE'

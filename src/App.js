@@ -1,6 +1,6 @@
 import React, {  useState } from 'react';
 import './App.css';
-import CardsContainer from './src/components/Cards-container';
+import CardsContainer from './components/Cards-container';
 
 function App({globalState, userInfo}) {
   const userName = userInfo.name
