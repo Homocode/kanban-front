@@ -10,7 +10,7 @@ const userInfo = {
 
 const getInitialState = async() => {
   try {
-   const resp = await fetch("http://localhost:3001/api/user", {
+   const resp = await fetch("http://ec2-54-207-162-78.sa-east-1.compute.amazonaws.com/:3001/api/user", {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

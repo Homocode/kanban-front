@@ -7,7 +7,7 @@ function App({globalState, userInfo}) {
   const [cardHolders, setCardsContainers] = useState(globalState)
 
   const handleChange = () => {
-    fetch('http://localhost:3001/api/cards-container', {
+    fetch('http://ec2-54-207-162-78.sa-east-1.compute.amazonaws.com/:3001/api/cards-container', {
       method: 'POST',
       headers: {
       'Content-Type': 'application/json',
@@ -25,7 +25,7 @@ function App({globalState, userInfo}) {
 
   const handleDeleteContainer = (event) => {
     const cardscontainerId = event.target.parentNode.parentNode.getAttribute("id")
-    fetch(`http://localhost:3001/api/cards-container/${cardscontainerId}`, {
+    fetch(`http://ec2-54-207-162-78.sa-east-1.compute.amazonaws.com/:3001/api/cards-container/${cardscontainerId}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
