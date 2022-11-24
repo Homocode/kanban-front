@@ -1,219 +1,41 @@
-html {
-  box-sizing: border-box;
-  font-size: 16px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-body {
-  margin: 0 1% 0 1%;
-  background-color: rgb(252, 252, 252);
-}
-
-#even-containers {
+.flex-container-rw {
   display: flex;
-  justify-content: center;
-  gap: 2%;
-  width: 100%;
-  flex-wrap: wrap;
 }
 
-@media (min-width: 667px) {
-  #even-containers {
-    justify-content: flex-start;
-  }
-}
-
-#even-containers>* {
-  margin-top: 2%;
-  flex-basis: 20rem;
-  height: fit-content;
-  min-height: 12rem;
-}
-
-#even-containers>* {
+.flex-container-clm {
   display: flex;
   flex-direction: column;
+}
+
+#header {
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: stretch;
+  margin-left: 1%;
+  margin-right: 1%;
 }
 
-.container {
-  background-color: rgb(243, 243, 243);
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
-}
-
-.container-header {
-  width: 100%;
-  margin: 0;
-  padding: 0.8rem 0 0.8rem 0;
-  border-top-right-radius: 0.7rem;
-  border-top-left-radius: 0.7rem;
-  text-align: center;
-  color: white;
-  background-color: rgb(220, 122, 255);
-}
-
-#header-form>input {
-  background-color: inherit;
-  color: white;
-  font-size: 18px;
-  text-align: center;
-  border: none;
-}
-
-.container-content {
-  margin: 0.8rem;
-  align-self: stretch;
-  flex-grow: 1;
-}
-
-.inline-display {
-  display: flex;
+#app-name-wrapper {
   align-items: center;
-  gap: 0.5rem;
-  margin-left: 0.4rem;
-  flex-basis: auto;
 }
 
-.container-footer-button {
-  margin: 0.5rem 0 0.5rem 0.7rem;
-  border: none;
-  background-color: rgb(243, 243, 243);
-  cursor: pointer;
+#app-name-wrapper > h1 {
+  font-size: 1.8rem;
 }
 
-.plus-sign {
-  margin-right: 0.5 rem;
-}
-
-.assignment-card {
-  width: 95%;
-  min-height: 7rem;
-  align-self: center;
-  margin: 0.3rem 0 0.3rem 0;
-  background-color: rgb(252, 252, 252);
-  box-shadow: 1px 2px 3px 0px rgb(151 151 151);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
-form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.task>form>input {
-  width: 90%;
-  border: none;
-  background-color: rgb(252, 252, 252);
-  font-size: 16px;
-}
-
-.task>#card-asignment {
-  resize: none;
-  background-color: rgb(252, 252, 252);
-  border: none;
-}
-
-.status-circle {
-  height: 1rem;
-  width: 1rem;
-  background-color: cyan;
-  border-radius: 100%;
-}
-
-select {
-  border: none;
-  background-color: rgb(252, 252, 252);
-}
-
-#priority-number {
-  width: 7%;
-  background-color: rgb(252, 252, 252);
-  border: none;
-}
-
-#status-task {
-  width: 40%;
-  background-color: rgb(252, 252, 252);
-  border: none;
-}
-
-#status-status-circle {
-  display: grid;
-  grid-template-areas:
-    "a b"
-    "c d";
-  background-color: rgb(252, 252, 252);
-}
-
-#status-status-circle-a {
-  border-top-left-radius: 100%;
-  background-color: yellow;
-}
-
-#status-status-circle-b {
-  border-top-right-radius: 100%;
-
-  background-color: rgb(29, 113, 249);
-}
-
-#status-status-circle-c {
-  border-bottom-left-radius: 100%;
-  background-color: aqua;
-}
-
-#status-status-circle-d {
-  border-bottom-right-radius: 100%;
-  background-color: aqua;
-}
-
-
-/* #container-1 {
-  box-shadow: inset 0.3rem 0.3rem 0 0 rgb(85, 85, 218);
-  flex-basis: 20rem;
-}
-#container-2 {
-  box-shadow: inset 0.3rem 0.3rem 0 0 rgb(255, 174, 0);
-}
-#container-3 {
-  box-shadow: inset 0.3rem 0.3rem 0 0 rgb(218, 85, 85);
-}
-#container-4 {
-  box-shadow: inset 0.3rem 0.3rem 0 0 rgb(85, 218, 85);
-} */
-
-#container-header {
-  background-color: rgb(85, 85, 218);
-}
-
-.container-header {
-  background-color: rgb(85, 85, 218);
-  display: flex;
-  flex-direction: row-reverse
-}
-
-.delete-button {
-  border: none;
-  background-color: rgb(252, 252, 252);
-  cursor: pointer;
-  margin: 0;
-  margin-right: 0.5rem;
-  padding: 0;
-}
-
-.container-header>button {
-  background-color: rgb(85, 85, 218);
+#logo-wrapper {
+  height: fit-content;
   width: fit-content;
-  margin: 0;
-  margin-left: 0.5rem;
 }
 
-#assignment-form {
-  display: flex;
-  flex-direction: row;
+img {
+  height: 5.5rem;
+  width: 5.5rem;
+}
+
+.S9gUrf-YoZ4jf {
+  top: 0.5rem;
+}
+
+.body {
+  
 }

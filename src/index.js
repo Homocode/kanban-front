@@ -1,32 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import "./index.css";
+import App from "./App";
+import { AuthProvider } from "./hooks/useAuth";
+import { ThemeProvider, createTheme } from "@mui/material";
 
-const userInfo = {
-  name: "german",
-  password: "123",
-  isNew: false
-}
+const theme = createTheme({
+  palette: {
+    primary: { main: "#3a34d2" },
+  },
+});
 
-const getInitialState = async() => {
-  try {
-   const resp = await fetch("http://ec2-54-207-162-78.sa-east-1.compute.amazonaws.com:3001/api/user", {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(userInfo),
-   })
-   const data = await resp.json()
-   root.render(
-    <App globalState={data} userInfo={userInfo}/>
-  )
-  } catch (error) {
-    console.log(error)
-  }
-
-}
-
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-getInitialState()
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <BrowserRouter>
+    <React.StrictMode>
+      <AuthProvider>
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
+      </AuthProvider>
+    </React.StrictMode>
+  </BrowserRouter>
+);
