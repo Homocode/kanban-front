@@ -25,10 +25,8 @@ export function AuthProvider({ children }) {
   const navigate = useNavigate();
 
   const login = async (data) => {
-    console.log(data);
-    const resp = await loginService.login(data);
-    console.log("estoy dsps del await en login auth hook");
-    setUser(resp);
+    const loginResp = await loginService.login(data);
+    setUser(loginResp);
     navigate("/user/boards", { replace: true });
   };
 
@@ -38,7 +36,6 @@ export function AuthProvider({ children }) {
   };
 
   const value = useMemo(() => {
-    console.log("useMemo");
     return {
       user,
       login,

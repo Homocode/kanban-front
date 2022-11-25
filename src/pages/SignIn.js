@@ -9,21 +9,21 @@ import {
   Button,
 } from "@mui/material";
 import { useAuth } from "../hooks/useAuth";
-import { userLoginData } from "../utils";
+import { loginService } from "../services";
 
-export default function SignIn() {
-  const { login, error } = useAuth();
+export default function SignIn({ setSignIn }) {
+  const { login } = useAuth();
   const username = useRef(null);
   const userlastname = useRef(null);
   const useremail = useRef(null);
   const userpassword = useRef(null);
   const [emailAlreadyUse, setEmailAlreadyUse] = useState(false);
 
-  const handleLogin = async (event) => {
+  const handleSignIn = async (event) => {
     event.preventDefault();
     try {
       await login(
-        userLoginData("signin", {
+        loginService.userLoginData("signin", {
           useremail,
           userpassword,
           username,
@@ -35,11 +35,12 @@ export default function SignIn() {
       useremail.current.value = "";
       userpassword.current.value = "";
     } catch (e) {
-      useremail.current.value = "";
       // eslint-disable-next-line default-case
       switch (e.message) {
         case "Bad Credentials":
           setEmailAlreadyUse(true);
+          useremail.current.value = "";
+          userpassword.current.value = "";
       }
       console.error(e);
     }
@@ -52,7 +53,7 @@ export default function SignIn() {
   };
 
   return (
-    <Container id="El de afuera" maxWidth="xs">
+    <Container maxWidth="xs">
       <Grid
         container={true}
         direction="column"
@@ -63,18 +64,19 @@ export default function SignIn() {
         <Paper elevation={3} sx={{ padding: "1.2em", borderRadius: "0.5em" }}>
           <Typography
             sx={{ fontWeight: 500, mt: 1, mb: 1 }}
-            variant="h4"
+            variant="h5"
             align="center"
           >
             Sign In
           </Typography>
-          <Box component="form" onSubmit={handleLogin}>
+          <Box component="form" onSubmit={handleSignIn}>
             <TextField
               name="username"
               margin="normal"
               type="text"
               fullWidth
               label="Name"
+              inputRef={username}
               sx={{ mt: 2, mb: 1.5 }}
               required
             />
@@ -84,6 +86,7 @@ export default function SignIn() {
               type="text"
               fullWidth
               label="Lastname"
+              inputRef={userlastname}
               sx={{ mt: 2, mb: 1.5 }}
               required
             />
@@ -93,6 +96,7 @@ export default function SignIn() {
               type="text"
               fullWidth
               label="Email"
+              inputRef={useremail}
               sx={{ mt: 2, mb: 1.5 }}
               required
               error={emailAlreadyUse}
@@ -104,18 +108,36 @@ export default function SignIn() {
               type="password"
               fullWidth
               label="Password"
+              inputRef={userpassword}
               sx={{ mt: 1.5, mb: 1.5 }}
               required
             />
 
-            <Button
-              fullWidth
-              type="submit"
-              variant="contained"
-              sx={{ mt: 1.5, mb: 3 }}
-            >
-              Sig In
-            </Button>
+            <Box display="flex" sx={{ justifyContent: "space-around" }}>
+              <Button
+                type="submit"
+                variant="contained"
+                sx={{ width: 2 / 3, mt: 1.5, mb: 1.5 }}
+              >
+                Sign In
+              </Button>
+            </Box>
+
+            <Box display="flex" sx={{ justifyContent: "space-around" }}>
+              <Typography sx={{ color: "#CFCFCF" }} variant="p">
+                or
+              </Typography>
+            </Box>
+
+            <Box display="flex" sx={{ justifyContent: "space-around" }}>
+              <Button
+                onClick={() => setSignIn(false)}
+                variant="contained"
+                sx={{ width: 1 / 2, mt: 1.5, mb: 3 }}
+              >
+                Log In
+              </Button>
+            </Box>
           </Box>
         </Paper>
       </Grid>

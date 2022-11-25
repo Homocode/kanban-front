@@ -1,0 +1,36 @@
+{
+    "_id": {
+      "$oid": "635925e1a632a611cd308e8c"
+    },
+    "associateUserId": {
+      "$oid": "63570942fbf9ab0e3ae09671"
+    },
+    "title": "New Column",
+    "cards": [
+      {
+        "assignment": "",
+        "priority": 1,
+        "status": 0,
+        "_id": {
+          "$oid": "635925e1a632a611cd308e8d"
+        }
+      },
+      {
+        "assignment": "",
+        "priority": 1,
+        "status": 0,
+        "_id": {
+          "$oid": "635925e4a632a611cd308e92"
+        }
+      },
+      {
+        "assignment": "",
+        "priority": 1,
+        "status": 0,
+        "_id": {
+          "$oid": "635925e6a632a611cd308e97"
+        }
+      }
+    ],
+    "__v": 0
+  }

@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { useAuth } from "../hooks/useAuth";
 import SignIn from "./SignIn";
-import { userLoginData } from "../utils";
+import { loginService } from "../services";
 
 export default function LogIn() {
   const { login } = useAuth();
@@ -23,8 +23,12 @@ export default function LogIn() {
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
-      await login(userLoginData("login", { useremail, userpassword }));
+      await login(
+        loginService.userLoginData("login", { useremail, userpassword })
+      );
     } catch (e) {
+      console.log("catch del login");
+      console.log(e);
       switch (e.message) {
         case "Bad Credentials":
           setBadCredentials(true);
@@ -43,13 +47,17 @@ export default function LogIn() {
     }
   };
 
-  const handleCallbackResponse = async (response) => {
+  const handleGoogleAuth = async (response) => {
     const userObject = await jwt_decode(response.credential);
-    const userCredentials = userLoginData("signin", userObject);
+    const userCredentials = loginService.userLoginData(
+      "signingoogle",
+      userObject
+    );
+    console.log(userObject);
     try {
       await login(userCredentials);
     } catch (e) {
-      console.error(e);
+      console.log(e);
     }
   };
 
@@ -58,7 +66,7 @@ export default function LogIn() {
     google.accounts.id.initialize({
       client_id:
         "535646579832-5sv3q8icekuaits1pulu119kn8d5nlic.apps.googleusercontent.com",
-      callback: handleCallbackResponse,
+      callback: handleGoogleAuth,
     });
     google.accounts.id.renderButton(
       document.getElementById("signInBtn-wrapper"),
@@ -73,7 +81,7 @@ export default function LogIn() {
   return (
     <>
       {signIn ? (
-        <SignIn handleLogin={handleLogin} />
+        <SignIn setSignIn={setSignIn} />
       ) : (
         <Container maxWidth="xs">
           <Grid
@@ -139,7 +147,6 @@ export default function LogIn() {
                 <Box display="flex" sx={{ justifyContent: "space-around" }}>
                   <Button
                     onClick={() => setSignIn(true)}
-                    type="submit"
                     variant="contained"
                     sx={{ width: 1 / 2, mt: 1.5, mb: 3 }}
                   >
