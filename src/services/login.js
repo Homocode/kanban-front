@@ -1,5 +1,3 @@
-import axios from "axios";
-
 const baseUrl = "http://localhost:4000/api/user/logi";
 const REACT_APP_ENV = "dev";
 
@@ -33,8 +31,6 @@ export const login = async (credentials) => {
       throw Error("Bad Credentials");
     }
   }
-  const data = await axios.post(baseUrl, credentials);
-  return data;
 };
 
 export const userLoginData = (origin, userData) => {

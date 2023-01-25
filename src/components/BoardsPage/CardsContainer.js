@@ -1,9 +1,15 @@
 import * as React from "react";
-import { Card, CardContent, CardHeader, IconButton } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  IconButton,
+  InputBase,
+} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import TaskCard from "./Card";
 
-export default function CardsContainer() {
+export default function CardsContainer({ cardsContainer }) {
   return (
     <Card sx={{ minWidth: 275, maxWidth: 300 }}>
       <CardHeader
@@ -12,11 +18,13 @@ export default function CardsContainer() {
             <CloseIcon fontSize="small" />
           </IconButton>
         }
-        title="Very Important Things"
+        title={<InputBase value={cardsContainer.title} />}
         sx={{ background: "blue" }}
       />
       <CardContent>
-        <TaskCard />
+        {cardsContainer.cards.map((element) => {
+          return <TaskCard cardData={element} />;
+        })}
       </CardContent>
     </Card>
   );

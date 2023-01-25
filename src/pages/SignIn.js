@@ -100,6 +100,7 @@ export default function SignIn({ setSignIn }) {
               sx={{ mt: 2, mb: 1.5 }}
               required
               error={emailAlreadyUse}
+              helperText={emailAlreadyUse ? "Email already used" : null}
               onChange={resetTextFieldError}
             />
             <TextField

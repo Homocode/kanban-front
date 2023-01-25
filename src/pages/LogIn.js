@@ -113,6 +113,7 @@ export default function LogIn() {
                   required
                   inputRef={useremail}
                   error={badCredentials}
+                  helperText={badCredentials ? "Invalid credentials" : null}
                   onChange={resetTextFieldError}
                 />
                 <TextField
@@ -125,6 +126,7 @@ export default function LogIn() {
                   required
                   inputRef={userpassword}
                   error={badCredentials}
+                  helperText={badCredentials ? "Invalid credentials" : null}
                   onChange={resetTextFieldError}
                 />
 

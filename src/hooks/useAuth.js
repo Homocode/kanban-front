@@ -40,7 +40,7 @@ export function AuthProvider({ children }) {
       user,
       login,
       logout,
-    };
+    }; // eslint-disable-next-line
   }, [user]);
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
